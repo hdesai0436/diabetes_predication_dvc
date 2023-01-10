@@ -1,3 +1,10 @@
 base:
   random_state: 101
   test_size: 0.2
+
+train:
+  criterion: 'entropy'
+  max_depth: 30
+  min_samples_leaf: 1
+  min_samples_split: 2
+  n_estimators: 800

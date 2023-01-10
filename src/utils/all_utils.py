@@ -47,3 +47,10 @@ def feature_selection(data):
     col_name.append('Outcome') # append target columns to list
     feature_df = df.loc[:, df.columns.isin(list(col_name))] # choose only select columns from pandas dataframe
     return feature_df, features_rank
+
+def save_model( model, model_filename):
+    joblib.dump(model,model_filename)
+
+def load_model(model_file_path):
+    model = joblib.load(model_file_path)
+    return model

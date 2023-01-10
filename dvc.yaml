@@ -50,3 +50,20 @@ stages:
     outs:
     - artifacts/split_data_dir/train.csv
     - artifacts/split_data_dir/test.csv
+
+  train:
+    cmd: python src/stage_05_train.py  --config=config/config.yaml --params=params.yaml
+
+    deps:
+      - src/stage_05_train.py
+      - config/config.yaml
+      - src/utils/all_utils.py
+      - artifacts/split_data_dir/train.csv
+    params:
+      - train.criterion
+      - train.max_depth
+      - train.min_samples_split
+      - train.n_estimators
+
+    outs:
+      - artifacts/model_dir/pipe.pkl
