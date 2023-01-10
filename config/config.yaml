@@ -14,6 +14,11 @@ artifacts:
   feature_selection_score: feature_imporatant_score.csv
   after_selection_data: after_feature_selection.csv
 
+  split_data_dir: split_data_dir
+  train: train.csv
+  test: test.csv
+
+
   
 
 

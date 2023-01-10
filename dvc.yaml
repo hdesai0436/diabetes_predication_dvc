@@ -33,3 +33,20 @@ stages:
     outs:
     - artifacts/feature_selection_dir/after_feature_selection.csv
     - artifacts/feature_selection_dir/feature_imporatant_score.csv
+
+  split_data:
+    cmd: python src/stage_04_split_data.py --config=config/config.yaml --params=params.yaml
+
+    deps:
+    - src/stage_04_split_data.py
+    - src/utils/all_utils.py
+    - config/config.yaml
+    - artifacts/feature_selection_dir/after_feature_selection.csv
+
+    params:
+    - base.random_state
+    - base.test_size
+
+    outs:
+    - artifacts/split_data_dir/train.csv
+    - artifacts/split_data_dir/test.csv
