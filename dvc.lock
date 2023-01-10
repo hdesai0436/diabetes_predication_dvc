@@ -4,15 +4,37 @@ stages:
     cmd: python src/stage_01_get_data.py --config=config/config.yaml
     deps:
     - path: config/config.yaml
-      md5: 4ae5c1f0c0567ec3382602a590818125
-      size: 162
+      md5: a6f7afa131894e7a353efc0ad9a03890
+      size: 305
     - path: src/stage_01_get_data.py
       md5: 41eb0863ee2696efb5cee347efb7d07a
       size: 913
     - path: src/utils/all_utils.py
-      md5: 0a5fdc5842d677c46c1b67dc49b69ff2
-      size: 420
+      md5: 5228d87b3d25baa30ab0e9bbbc9233a6
+      size: 838
     outs:
     - path: artifacts/raw_local_dir/data.csv
       md5: 60acca81995dc9744b499005ecfe6f2a
       size: 24059
+  clean_data:
+    cmd: python src/stage_02_clean_data.py --config=config/config.yaml
+    deps:
+    - path: artifacts/raw_local_dir/data.csv
+      md5: 60acca81995dc9744b499005ecfe6f2a
+      size: 24059
+    - path: config/config.yaml
+      md5: a6f7afa131894e7a353efc0ad9a03890
+      size: 305
+    - path: src/stage_02_clean_data.py
+      md5: 0f7e6f619eac0bc50ac8aedaa0e27684
+      size: 1848
+    - path: src/utils/all_utils.py
+      md5: 5228d87b3d25baa30ab0e9bbbc9233a6
+      size: 838
+    outs:
+    - path: artifacts/clean_data_dir/fill_values.csv
+      md5: 32d0c026e52c199f9bab5a3e5cb535d9
+      size: 31234
+    - path: artifacts/null_dir/null.csv
+      md5: 19c77d0ecd6b28cb8467f680341f9e40
+      size: 134

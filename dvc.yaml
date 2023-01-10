@@ -7,3 +7,16 @@ stages:
       - config/config.yaml
     outs:
       - artifacts/raw_local_dir/data.csv
+
+  clean_data:
+    cmd: python src/stage_02_clean_data.py --config=config/config.yaml
+
+    deps:
+    - src/stage_02_clean_data.py
+    - src/utils/all_utils.py
+    - config/config.yaml
+    - artifacts/raw_local_dir/data.csv
+
+    outs:
+    - artifacts/null_dir/null.csv
+    - artifacts/clean_data_dir/fill_values.csv

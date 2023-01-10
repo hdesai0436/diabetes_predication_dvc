@@ -3,3 +3,13 @@ artifacts:
   artifacts_dir: artifacts
   raw_local_dir: raw_local_dir
   raw_local_file: data.csv
+
+  null_dir: null_dir
+  null_local_file: null.csv
+
+  clean_data_dir: clean_data_dir
+  fill_missing_value_df: fill_values.csv
+
+  
+
+

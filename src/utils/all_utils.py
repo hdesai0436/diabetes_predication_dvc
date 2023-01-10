@@ -15,3 +15,14 @@ def create_dir(dirs:list):
 
 def save_local_df(data,data_path):
     data.to_csv(data_path,index=False)
+
+
+def fill_missing_value(dataframe):
+    df = dataframe
+    a = df.columns[df.isna().any()].tolist()
+    for i in a:
+        temp = df[df[i].notnull()]
+        temp = temp[[i, 'Outcome']].groupby(['Outcome'])[[i]].median().reset_index()
+        df.loc[(df['Outcome'] == 0 ) & (df[i].isnull()), i] = temp[i].iloc[0]
+        df.loc[(df['Outcome'] == 1 ) & (df[i].isnull()), i] = temp[i].iloc[1]
+    return df
