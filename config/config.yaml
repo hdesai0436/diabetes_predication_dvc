@@ -9,6 +9,10 @@ artifacts:
 
   clean_data_dir: clean_data_dir
   fill_missing_value_df: fill_values.csv
+  
+  feature_selection_dir: feature_selection_dir
+  feature_selection_score: feature_imporatant_score.csv
+  after_selection_data: after_feature_selection.csv
 
   
 

@@ -20,3 +20,16 @@ stages:
     outs:
     - artifacts/null_dir/null.csv
     - artifacts/clean_data_dir/fill_values.csv
+
+  feature_selection:
+    cmd: python src/stage_03_feature.py --config=config/config.yaml
+
+    deps:
+    - src/stage_03_feature.py
+    - config/config.yaml
+    - src/utils/all_utils.py
+    - artifacts/clean_data_dir/fill_values.csv
+
+    outs:
+    - artifacts/feature_selection_dir/after_feature_selection.csv
+    - artifacts/feature_selection_dir/feature_imporatant_score.csv
