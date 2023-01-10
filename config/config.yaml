@@ -1,0 +1,5 @@
+data_source: 'C:\Users\hardi\Documents\mlops_dvc\diabetes.csv'
+artifacts:
+  artifacts_dir: artifacts
+  raw_local_dir: raw_local_dir
+  raw_local_file: data.csv
