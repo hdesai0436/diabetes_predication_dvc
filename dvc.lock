@@ -131,3 +131,7 @@ stages:
     - path: eval/metrics/metrics.json
       md5: 2baed8238dbccc33ffeb9e1826064716
       size: 37
+    - path: eval/roc
+      md5: c9c790ecbb3364316edf0f0d5803a57f.dir
+      size: 294
+      nfiles: 1
