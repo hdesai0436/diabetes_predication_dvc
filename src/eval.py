@@ -23,23 +23,17 @@ def evaluate(config_path):
     x = df.drop('Outcome',axis=1)
     y = df['Outcome']
 
-    prc_dir = os.path.join(EVAL_PATH, "metrics")
-    os.makedirs(prc_dir, exist_ok=True)
-    prc_file = os.path.join(prc_dir, "metrics.json")
 
     pipe = load_model(model_file_path)
     pred = pipe.predict(x)
     roc_auc = roc_auc_score(pred, y)
     
-    with open(prc_file, "w") as rf:
+    with open("metrics.json", "w") as rf:
         json.dump({
             'roc_auc_score':roc_auc
         },rf)
 
-    
-    roc_dir = os.path.join(EVAL_PATH, "roc")
-    os.makedirs(roc_dir, exist_ok=True)
-    roc_file = os.path.join(roc_dir, "roc.json")
+
 
 
     precision, recall, prc_thresholds = precision_recall_curve(y, pred)
@@ -47,7 +41,7 @@ def evaluate(config_path):
     prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]
     
    
-    with open(roc_file, "w") as fd:
+    with open("roc.json", "w") as fd:
         json.dump(
             {
               "prc": [

@@ -78,17 +78,15 @@ stages:
       - config/config.yaml
       - artifacts/model_dir/pipe.pkl
 
-    outs:
-      - eval/roc:
-          cache: False
+    
     metrics:
-      - eval/metrics/metrics.json:
+      - metrics.json:
           cache: False
 
 plots:
   - Precision-Recall:
       x: recall
       y: precision
-        eval/roc/roc.json
+        roc.json
   
     

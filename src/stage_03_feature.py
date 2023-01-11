@@ -16,7 +16,7 @@ def feature_selection_df(config_path):
     # get filling missing data
     fill_missing_df_path = os.path.join(artifacts_dir,clean_data_dir,fill_missing_value_file)
     df = pd.read_csv(fill_missing_df_path)
-    feature_df, feature_important_score = feature_selection(df)
+    feature_df, feature_important_score = feature_selection(df) #select best 6 feature from the dataset
     #feature selection file
     feature_selection_dir = config['artifacts']['feature_selection_dir']
     feature_selection_score_path = config['artifacts']['feature_selection_score']
