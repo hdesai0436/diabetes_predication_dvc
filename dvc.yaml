@@ -61,9 +61,31 @@ stages:
       - artifacts/split_data_dir/train.csv
     params:
       - train.criterion
-      - train.max_depth
       - train.min_samples_split
       - train.n_estimators
+      - train.min_samples_leaf
+      - train.max_features
 
     outs:
       - artifacts/model_dir/pipe.pkl
+
+  model_test:
+    cmd: python src/eval.py --config=config/config.yaml
+
+    deps:
+      - src/eval.py
+      - src/utils/all_utils.py
+      - config/config.yaml
+      - artifacts/model_dir/pipe.pkl
+
+    metrics:
+      - eval/metrics/metrics.json:
+          cache: False
+
+plots:
+  - Precision-Recall:
+      x: recall
+      y: 
+        eval/roc/roc.json:precision
+  
+    

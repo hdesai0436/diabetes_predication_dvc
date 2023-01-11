@@ -5,8 +5,11 @@ import os
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-from imblearn.over_sampling import SMOTE
-from imblearn.pipeline import Pipeline as imbpipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.pipeline import Pipeline
 
 
 
@@ -26,15 +29,19 @@ def train(config_path,params_path):
     sd = StandardScaler()
 
     criterion = params['train']['criterion']
-    max_depth = params['train']['max_depth']
     n_estimators = params['train']['n_estimators']
     min_samples_split = params['train']['min_samples_split']
-    
+    min_samples_leaf = params['train']['min_samples_leaf']
+    max_features = params['train']['max_features']
 
-    randomforestclassifier = RandomForestClassifier(criterion=criterion,max_depth=max_depth,min_samples_split=min_samples_split, n_estimators=n_estimators)
 
-    pipe = imbpipeline([('smt', SMOTE()),('sd',sd), ('randomforestclassifier',randomforestclassifier )])
+    randomforestclassifier = RandomForestClassifier(criterion=criterion,min_samples_split=min_samples_split, n_estimators=n_estimators,min_samples_leaf=min_samples_leaf,max_features=max_features)
 
+    pipe = Pipeline([
+        ('scaler', StandardScaler()),
+        ('rf',randomforestclassifier)
+
+    ])
     pipe.fit(x,y)
 
     model_dir = config['artifacts']['model']['model_dir']

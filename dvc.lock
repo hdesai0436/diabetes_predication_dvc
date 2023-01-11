@@ -96,18 +96,38 @@ stages:
       md5: 312dad03abac4c1cc72b2954b380cc73
       size: 607
     - path: src/stage_05_train.py
-      md5: c902b3c3f7af8f63a9a4eb6a14faa0f8
-      size: 1960
+      md5: 4a1ec3e88ac77083545d7f6aa02bccc6
+      size: 2193
     - path: src/utils/all_utils.py
       md5: d9e39b66391ab26022b9ca8acb90aa02
       size: 1951
     params:
       params.yaml:
-        train.criterion: entropy
-        train.max_depth: 30
+        train.criterion: gini
+        train.max_features: sqrt
+        train.min_samples_leaf: 1
         train.min_samples_split: 2
-        train.n_estimators: 800
+        train.n_estimators: 100
     outs:
     - path: artifacts/model_dir/pipe.pkl
-      md5: 3240fc7cb2a22ebe440d51665fcbc5ec
-      size: 8749339
+      md5: 9a9b9b365b46d833f4cf0d02550c90c7
+      size: 971407
+  model_test:
+    cmd: python src/eval.py --config=config/config.yaml
+    deps:
+    - path: artifacts/model_dir/pipe.pkl
+      md5: 9a9b9b365b46d833f4cf0d02550c90c7
+      size: 971407
+    - path: config/config.yaml
+      md5: 312dad03abac4c1cc72b2954b380cc73
+      size: 607
+    - path: src/eval.py
+      md5: 1eaf4499c8f75023c09116e985ec127f
+      size: 2250
+    - path: src/utils/all_utils.py
+      md5: d9e39b66391ab26022b9ca8acb90aa02
+      size: 1951
+    outs:
+    - path: eval/metrics/metrics.json
+      md5: 2baed8238dbccc33ffeb9e1826064716
+      size: 37

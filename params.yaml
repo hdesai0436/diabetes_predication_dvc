@@ -3,8 +3,8 @@ base:
   test_size: 0.2
 
 train:
-  criterion: 'entropy'
-  max_depth: 30
+  criterion: 'gini'
   min_samples_leaf: 1
   min_samples_split: 2
-  n_estimators: 800
+  n_estimators: 100
+  max_features: 'sqrt'
