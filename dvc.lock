@@ -4,14 +4,14 @@ stages:
     cmd: python src/stage_01_get_data.py --config=config/config.yaml
     deps:
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/stage_01_get_data.py
       md5: 41eb0863ee2696efb5cee347efb7d07a
       size: 913
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     outs:
     - path: artifacts/raw_local_dir/data.csv
       md5: 60acca81995dc9744b499005ecfe6f2a
@@ -23,14 +23,14 @@ stages:
       md5: 60acca81995dc9744b499005ecfe6f2a
       size: 24059
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/stage_02_clean_data.py
-      md5: 0f7e6f619eac0bc50ac8aedaa0e27684
-      size: 1848
+      md5: 44e95eabd0709c5f9ba7a7b0da97083a
+      size: 2519
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     outs:
     - path: artifacts/clean_data_dir/fill_values.csv
       md5: 32d0c026e52c199f9bab5a3e5cb535d9
@@ -45,89 +45,82 @@ stages:
       md5: 32d0c026e52c199f9bab5a3e5cb535d9
       size: 31234
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/stage_03_feature.py
-      md5: eabd125260b9a93aaee7c6fbe5e266ca
-      size: 1780
+      md5: 71489005aa8676bb30209f4ad5d433db
+      size: 1761
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     outs:
     - path: artifacts/feature_selection_dir/after_feature_selection.csv
-      md5: 49bbdac911bba782e0b3ee642c03e594
-      size: 22817
+      md5: eae799f01991d7402695a444aec6a2c0
+      size: 18099
     - path: artifacts/feature_selection_dir/feature_imporatant_score.csv
-      md5: 1dfce0fb205785b99937738d9e826c8c
+      md5: 8a92a87e8a35fa18f922d5c711216342
       size: 260
   split_data:
     cmd: python src/stage_04_split_data.py --config=config/config.yaml --params=params.yaml
     deps:
     - path: artifacts/feature_selection_dir/after_feature_selection.csv
-      md5: 49bbdac911bba782e0b3ee642c03e594
-      size: 22817
+      md5: eae799f01991d7402695a444aec6a2c0
+      size: 18099
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/stage_04_split_data.py
       md5: 96ce151fdeee8a223efccf66d2a5836b
       size: 1702
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     params:
       params.yaml:
-        base.random_state: 10
+        base.random_state: 101
         base.test_size: 0.2
     outs:
     - path: artifacts/split_data_dir/test.csv
-      md5: 1971f038ef0059afdc8495b962066686
-      size: 4630
+      md5: c5c5321d76b5175a53526de674869f98
+      size: 3675
     - path: artifacts/split_data_dir/train.csv
-      md5: 102c2255e486b860e9ff97f9e912f118
-      size: 18246
+      md5: fee6156840b77eba2259d643d0dc59a8
+      size: 14483
   train:
     cmd: python src/stage_05_train.py  --config=config/config.yaml --params=params.yaml
     deps:
     - path: artifacts/split_data_dir/train.csv
-      md5: 102c2255e486b860e9ff97f9e912f118
-      size: 18246
+      md5: fee6156840b77eba2259d643d0dc59a8
+      size: 14483
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/stage_05_train.py
-      md5: 4a1ec3e88ac77083545d7f6aa02bccc6
-      size: 2193
+      md5: 1fc10c60287486849e3266c39a34bc8c
+      size: 2313
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
-    params:
-      params.yaml:
-        train.criterion: gini
-        train.max_features: sqrt
-        train.min_samples_leaf: 1
-        train.min_samples_split: 2
-        train.n_estimators: 100
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     outs:
     - path: artifacts/model_dir/pipe.pkl
-      md5: c5e637b1372b94d7d282c6170772ead2
-      size: 949375
+      md5: 2089fac339e159d463af4a128dd9a7e8
+      size: 930865
   model_test:
     cmd: python src/eval.py --config=config/config.yaml
     deps:
     - path: artifacts/model_dir/pipe.pkl
-      md5: c5e637b1372b94d7d282c6170772ead2
-      size: 949375
+      md5: 2089fac339e159d463af4a128dd9a7e8
+      size: 930865
     - path: config/config.yaml
-      md5: a750a452b2cd0e18033c94f4c5bc782c
-      size: 603
+      md5: b767601f419b9d6b40b051f146dcfdff
+      size: 641
     - path: src/eval.py
-      md5: 9586cb42627375ba539969e9108f4aab
-      size: 2416
+      md5: 1956b06fd238ff2093fc013f9168c9f0
+      size: 2248
     - path: src/utils/all_utils.py
-      md5: d9e39b66391ab26022b9ca8acb90aa02
-      size: 1951
+      md5: 182bd88b18228d79658d223b3963819d
+      size: 3261
     outs:
     - path: metrics.json
-      md5: 6518b800eb60e2ff3f0a044c6292a736
+      md5: 0dab74cb978566f79b3f5b80aa11bbbd
       size: 37

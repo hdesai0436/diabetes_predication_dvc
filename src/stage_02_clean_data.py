@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from src.utils.all_utils import read_yaml,create_dir,save_local_df,fill_missing_value
+from src.utils.all_utils import read_yaml,create_dir,save_local_df,fill_missing_value,TurkyOutliers
 import os
 import numpy as np
 
@@ -18,6 +18,8 @@ def clean_data(config_path):
     # clean data folder
     clean_data_dir = config['artifacts']['clean_data_dir']
     fill_missing_data_file = config['artifacts']['fill_missing_value_df']
+    # remove outliers
+    remove_outliers_file = config['artifacts']['remove_outliers_df']
 
     null_value_dir_path = os.path.join(artifacts_dir,null_data_dir)
     create_dir([null_value_dir_path])
@@ -38,7 +40,19 @@ def clean_data(config_path):
     clean_path_dir = os.path.join(artifacts_dir,clean_data_dir)
     create_dir([clean_path_dir])
     fill_missing_value_df_path = os.path.join(clean_path_dir,fill_missing_data_file)
+    remove_outliers_df_path = os.path.join(clean_path_dir,remove_outliers_file)
     df.to_csv(fill_missing_value_df_path, sep=',', index=False)
+    df_name = df.columns
+    df_clean = TurkyOutliers(df,df_name[0],True)
+    df_clean = TurkyOutliers(df_clean,df_name[1],True)
+    df_clean = TurkyOutliers(df_clean,df_name[2],True)
+    df_clean = TurkyOutliers(df_clean,df_name[3],True)
+    df_clean = TurkyOutliers(df_clean,df_name[4],True)
+    df_clean = TurkyOutliers(df_clean,df_name[5],True)
+    df_clean = TurkyOutliers(df_clean,df_name[7],True)
+    df_clean.to_csv(remove_outliers_df_path,sep=',', index=False)
+
+
 
 
 

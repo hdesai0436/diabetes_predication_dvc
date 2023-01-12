@@ -3,15 +3,18 @@ import pandas as pd
 from src.utils.all_utils import read_yaml,create_dir,save_model
 import os
 import numpy as np
+from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.pipeline import Pipeline
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import AdaBoostClassifier,VotingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.pipeline import Pipeline
-
-
+import xgboost as xgb
 
 def train(config_path,params_path):
     config = read_yaml(config_path)
@@ -26,30 +29,31 @@ def train(config_path,params_path):
     x = train_df.drop('Outcome',axis=1)
     y = train_df['Outcome']
 
-    sd = StandardScaler()
+    XGB = xgb.XGBClassifier()
+    RF = RandomForestClassifier()
+    DC = DecisionTreeClassifier()
+    AD = AdaBoostClassifier()
 
-    criterion = params['train']['criterion']
-    n_estimators = params['train']['n_estimators']
-    min_samples_split = params['train']['min_samples_split']
-    min_samples_leaf = params['train']['min_samples_leaf']
-    max_features = params['train']['max_features']
+    CLASS = VotingClassifier(estimators=[('XGB', XGB),('RF',RF),('DC',DC),('AD',AD)])
 
-
-    randomforestclassifier = RandomForestClassifier(criterion=criterion,min_samples_split=min_samples_split, n_estimators=n_estimators,min_samples_leaf=min_samples_leaf,max_features=max_features)
+    
 
     pipe = Pipeline([
         ('scaler', StandardScaler()),
-        ('rf',randomforestclassifier)
+        ('CLASS', CLASS)
 
     ])
-    pipe.fit(x,y)
+    kfold = StratifiedKFold(n_splits=5)
+    results = cross_val_score(pipe,x,y, cv=kfold)
+    print('Accuracy on train: ',results.mean())
+    ensemble_model = pipe.fit(x,y)
 
     model_dir = config['artifacts']['model']['model_dir']
     model_file = config['artifacts']['model']['model_file']
     model_dir_path = os.path.join(artifacts_dir,model_dir)
     create_dir([model_dir_path])
     model_file_path = os.path.join(model_dir_path,model_file)
-    save_model(pipe,model_file_path)
+    save_model(ensemble_model,model_file_path)
 
 
 if __name__ == "__main__":

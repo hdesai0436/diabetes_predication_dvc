@@ -27,20 +27,16 @@ def evaluate(config_path):
     pipe = load_model(model_file_path)
     pred = pipe.predict(x)
 
-    print(type(pred))
-    print(type(y))
 
-   
-    con_dir = os.path.join(os.getcwd(),EVAL_PATH)
-    os.makedirs(con_dir, exist_ok=True)
     actual_data_file = 'data.csv'
-    actual_data_file_path = os.path.join(con_dir,actual_data_file)
-    y.to_csv(actual_data_file_path,sep=",",index=False)
+    con_dir = os.path.join(os.getcwd(),actual_data_file)
+    
+    y.to_csv(con_dir,sep=",",index=False)
 
     predicated_data_file = 'pred.csv'
-    pred_file_path = os.path.join(con_dir,predicated_data_file)
+    con_dir = os.path.join(os.getcwd(),predicated_data_file)
     pred_df = pd.DataFrame(pred,columns=['predication'])
-    pred_df.to_csv(pred_file_path,index=False)
+    pred_df.to_csv(con_dir,index=False)
     
 
 

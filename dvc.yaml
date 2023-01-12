@@ -59,12 +59,6 @@ stages:
       - config/config.yaml
       - src/utils/all_utils.py
       - artifacts/split_data_dir/train.csv
-    params:
-      - train.criterion
-      - train.min_samples_split
-      - train.n_estimators
-      - train.min_samples_leaf
-      - train.max_features
 
     outs:
       - artifacts/model_dir/pipe.pkl
@@ -89,11 +83,12 @@ plots:
       y: r_tpr
 
   - confusion:
+      template: confusion
       x:
         data.csv: Outcome
       y:
         pred.csv: predication
-      template: confusion
+      
 
         
   

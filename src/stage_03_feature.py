@@ -11,10 +11,10 @@ def feature_selection_df(config_path):
     config = read_yaml(config_path)
     artifacts_dir = config['artifacts']['artifacts_dir']
     clean_data_dir = config['artifacts']['clean_data_dir']
-    fill_missing_value_file = config['artifacts']['fill_missing_value_df']
+    clean_data_file = config['artifacts']['remove_outliers_df']
 
     # get filling missing data
-    fill_missing_df_path = os.path.join(artifacts_dir,clean_data_dir,fill_missing_value_file)
+    fill_missing_df_path = os.path.join(artifacts_dir,clean_data_dir,clean_data_file)
     df = pd.read_csv(fill_missing_df_path)
     feature_df, feature_important_score = feature_selection(df) #select best 6 feature from the dataset
     #feature selection file
