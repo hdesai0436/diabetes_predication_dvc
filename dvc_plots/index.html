@@ -17,5 +17,67 @@
 </head>
 <body>
     
+    <div id = "dvc_yaml__roc_json">
+        <script type = "text/javascript">
+            var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "values": [
+    {
+        "r_fpr": 0.0,
+        "r_tpr": 0.0,
+        "rev": "workspace",
+        "rh": 2.0
+    },
+    {
+        "r_fpr": 0.0970873786407767,
+        "r_tpr": 0.8235294117647058,
+        "rev": "workspace",
+        "rh": 1.0
+    },
+    {
+        "r_fpr": 1.0,
+        "r_tpr": 1.0,
+        "rev": "workspace",
+        "rh": 0.0
+    }
+]
+    },
+    "title": "dvc.yaml::roc.json",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": {
+            "content": "data"
+        }
+    },
+    "encoding": {
+        "x": {
+            "field": "r_fpr",
+            "type": "quantitative",
+            "title": "r_fpr"
+        },
+        "y": {
+            "field": "r_tpr",
+            "type": "quantitative",
+            "title": "r_tpr",
+            "scale": {
+                "zero": false
+            }
+        },
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
+    }
+}
+;
+            vegaEmbed('#dvc_yaml__roc_json', spec);
+        </script>
+    </div>
+    
+
 </body>
 </html>

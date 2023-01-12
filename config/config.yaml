@@ -21,8 +21,6 @@ artifacts:
   model:
     model_dir: model_dir
     model_file: pipe.pkl
-
-
   
 
 

@@ -84,9 +84,17 @@ stages:
           cache: False
 
 plots:
-  - Precision-Recall:
-      x: recall
-      y: precision
-        roc.json
+  - roc.json:
+      x: r_fpr
+      y: r_tpr
+
+  - confusion:
+      x:
+        data.csv: Outcome
+      y:
+        pred.csv: predication
+      template: confusion
+
+        
   
     
