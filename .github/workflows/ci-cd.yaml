@@ -17,8 +17,8 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
 
-      - 
-        name: train_eval
+       
+      - name: train_eval
         run: |
         # Install requirements
           pip install -r requirements.txt
