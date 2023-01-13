@@ -77,21 +77,21 @@ stages:
       size: 3261
     params:
       params.yaml:
-        base.random_state: 101
+        base.random_state: 10
         base.test_size: 0.2
     outs:
     - path: artifacts/split_data_dir/test.csv
-      md5: c5c5321d76b5175a53526de674869f98
-      size: 3675
+      md5: 74340dc8e8ede61bbe6cad8c220b2a2e
+      size: 3676
     - path: artifacts/split_data_dir/train.csv
-      md5: fee6156840b77eba2259d643d0dc59a8
-      size: 14483
+      md5: d4667beb25d8d31148da79a4c577b976
+      size: 14482
   train:
     cmd: python src/stage_05_train.py  --config=config/config.yaml --params=params.yaml
     deps:
     - path: artifacts/split_data_dir/train.csv
-      md5: fee6156840b77eba2259d643d0dc59a8
-      size: 14483
+      md5: d4667beb25d8d31148da79a4c577b976
+      size: 14482
     - path: config/config.yaml
       md5: b767601f419b9d6b40b051f146dcfdff
       size: 641
@@ -103,14 +103,14 @@ stages:
       size: 3261
     outs:
     - path: artifacts/model_dir/pipe.pkl
-      md5: 2089fac339e159d463af4a128dd9a7e8
-      size: 930865
+      md5: e903e13235e5ff672785c5ea154258fd
+      size: 882769
   model_test:
     cmd: python src/eval.py --config=config/config.yaml
     deps:
     - path: artifacts/model_dir/pipe.pkl
-      md5: 2089fac339e159d463af4a128dd9a7e8
-      size: 930865
+      md5: e903e13235e5ff672785c5ea154258fd
+      size: 882769
     - path: config/config.yaml
       md5: b767601f419b9d6b40b051f146dcfdff
       size: 641
@@ -122,5 +122,5 @@ stages:
       size: 3261
     outs:
     - path: metrics.json
-      md5: 0dab74cb978566f79b3f5b80aa11bbbd
+      md5: 60882636e0aa3254874891d0a480547a
       size: 37

@@ -3,6 +3,7 @@
 # dvc
 dvc
 dvc[gdrive]
+dvc[s3]
 
 # other important libs
 pandas

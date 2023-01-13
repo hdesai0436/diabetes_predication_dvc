@@ -1,4 +1,4 @@
 [core]
-    remote = remote_dir
-['remote "remote_dir"']
-    url = gdrive://1EFmXB3ZSZO81Zxgu19viHssjxuG8T-ee
+    remote = storage_data
+['remote "storage_data"']
+    url = s3://hp-dvc-store
