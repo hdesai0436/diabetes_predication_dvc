@@ -77,19 +77,7 @@ stages:
       - metrics.json:
           cache: False
 
-plots:
-  - roc:
-      x: r_fpr
-      y: r_tpr
-        roc.json
 
-  - confusion:
-      template: confusion
-      x:
-        data.csv: Outcome
-      y:
-        pred.csv: predication
-      
 
         
   
