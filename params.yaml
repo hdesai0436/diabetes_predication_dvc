@@ -1,4 +1,4 @@
 base:
-  random_state: 101
+  random_state: 10
   test_size: 0.2
 

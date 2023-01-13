@@ -78,9 +78,10 @@ stages:
           cache: False
 
 plots:
-  - roc.json:
+  - roc:
       x: r_fpr
       y: r_tpr
+        roc.json
 
   - confusion:
       template: confusion
