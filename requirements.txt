@@ -1,3 +1,5 @@
+-e .
+
 # dvc
 dvc
 dvc[gdrive]
@@ -7,4 +9,3 @@ pandas
 scikit-learn
 xgboost
 
--e .
