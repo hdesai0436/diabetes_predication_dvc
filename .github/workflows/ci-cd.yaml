@@ -23,7 +23,7 @@ jobs:
         name: Pull data & run-cache from IBM COS
         run: |
             dvc remote modify --local storage_data access_key_id ${{secrets.S3_ACCESS_KEY}}
-            dvc remote modify --local storage_data secret_access_key ${{S3_SECREAT_KEY}}
+            dvc remote modify --local storage_data secret_access_key ${{secrets.S3_SECREAT_KEY}}
             dvc pull --run-cache
       - 
         name: reproduce pipeline
