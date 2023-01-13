@@ -105,7 +105,7 @@ shortuuid==1.0.11
 shtab==1.5.8
 six==1.16.0
 smmap==5.0.0
--e git+https://github.com/hdesai0436/diabetes_predication_dvc.git@5517f4b7ec81e022efcb806fe1075e5657d18ef4#egg=src
+-e git+https://github.com/hdesai0436/diabetes_predication_dvc.git@00c39b7dc8b2b325b592caec1ec4dc276bf4bc39#egg=src
 tabulate==0.9.0
 threadpoolctl==3.1.0
 tomlkit==0.11.6
