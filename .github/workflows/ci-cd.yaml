@@ -1,39 +1,35 @@
-name: ci
+name: train-model
 
-# run the workflow on every push to main branch
+on: [push]
 
-on:
-  push:
-    branches:
-      - 'main'
-    
-# your work flow job 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container: docker://dvcorg/cml-py3:latest
+  run:
+    runs-on: [ubuntu-latest]
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      - 
-        name: intsall requ
-        run: pip install -r requirements.txt
-      -
-        name: Pull data & run-cache from IBM COS
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.10.5"
+      - name: cml_run
+        env:
+            repo_token: ${{secrets.GITHUB_TOKEM}}
         run: |
-            dvc remote modify --local storage_data access_key_id ${{secrets.S3_ACCESS_KEY}}
-            dvc remote modify --local storage_data secret_access_key ${{secrets.S3_SECREAT_KEY}}
-            dvc pull --run-cache
-      - 
-        name: reproduce pipeline
-        run: dvc repro
-      - 
-        name: Report metrics
-        run: | 
-          echo "## Metrics" >> README.md
-          git fetch --prune
-          dvc metrics diff master --show-md >> README.md
+            #ml work flow commands
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
+            dvc repro -v
+
+            echo "# REPORTS" >> report.md
+            echo "## metrics" >> report.md
+            cat score.json >> report.md
+
+            cml-send-comment report.md
+            
+
+
+
       
 
 
