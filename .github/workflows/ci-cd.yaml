@@ -1,6 +1,8 @@
 name: train-model
 
 on: [push]
+permissions:
+    contents: read|write
 
 jobs:
   run:
