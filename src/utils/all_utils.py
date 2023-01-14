@@ -5,6 +5,7 @@ from sklearn.feature_selection import SelectKBest,mutual_info_classif
 from sklearn.feature_selection import chi2
 import pandas as pd
 import joblib
+import json
 
 def read_yaml(path_to_yaml:str):
     with open(path_to_yaml) as yaml_file:
@@ -82,3 +83,8 @@ def save_model( model, model_filename):
 def load_model(model_file_path):
     model = joblib.load(model_file_path)
     return model
+
+
+def save_json(path,data):
+    with open(path,'w') as f:
+        json.dump(data,f,indent=4)

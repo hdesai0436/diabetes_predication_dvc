@@ -17,33 +17,27 @@
 </head>
 <body>
     
-    <div id = "dvc_yaml__roc_json">
+    <div id = "pre_json">
         <script type = "text/javascript">
             var spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
         "values": [
     {
-        "r_fpr": 0.0,
-        "r_tpr": 0.0,
+        "precision": 0.3770491803278688,
+        "recall": 1.0,
         "rev": "workspace",
-        "rh": 2.0
+        "thresh": 0.0
     },
     {
-        "r_fpr": 0.05263157894736842,
-        "r_tpr": 0.9565217391304348,
+        "precision": 0.8979591836734694,
+        "recall": 0.9565217391304348,
         "rev": "workspace",
-        "rh": 1.0
-    },
-    {
-        "r_fpr": 1.0,
-        "r_tpr": 1.0,
-        "rev": "workspace",
-        "rh": 0.0
+        "thresh": 1.0
     }
 ]
     },
-    "title": "dvc.yaml::roc.json",
+    "title": "pre.json",
     "width": 300,
     "height": 300,
     "mark": {
@@ -55,14 +49,14 @@
     },
     "encoding": {
         "x": {
-            "field": "r_fpr",
+            "field": "recall",
             "type": "quantitative",
-            "title": "r_fpr"
+            "title": "recall"
         },
         "y": {
-            "field": "r_tpr",
+            "field": "precision",
             "type": "quantitative",
-            "title": "r_tpr",
+            "title": "precision",
             "scale": {
                 "zero": false
             }
@@ -74,784 +68,69 @@
     }
 }
 ;
-            vegaEmbed('#dvc_yaml__roc_json', spec);
+            vegaEmbed('#pre_json', spec);
         </script>
     </div>
     
 
-    <div id = "dvc_yaml__confusion">
+    <div id = "roc_json">
         <script type = "text/javascript">
             var spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
         "values": [
     {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
+        "fpr": 0.0,
+        "rev": "workspace",
+        "th": 2.0,
+        "tpr": 0.0
     },
     {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
+        "fpr": 0.06578947368421052,
+        "rev": "workspace",
+        "th": 1.0,
+        "tpr": 0.9565217391304348
     },
     {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "1",
-        "predication": "1",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
-    },
-    {
-        "Outcome": "0",
-        "predication": "0",
-        "rev": "workspace"
+        "fpr": 1.0,
+        "rev": "workspace",
+        "th": 0.0,
+        "tpr": 1.0
     }
 ]
     },
-    "title": "dvc.yaml::confusion",
-    "facet": {
-        "field": "rev",
-        "type": "nominal"
+    "title": "roc.json",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": {
+            "content": "data"
+        }
     },
-    "spec": {
-        "transform": [
-            {
-                "aggregate": [
-                    {
-                        "op": "count",
-                        "as": "xy_count"
-                    }
-                ],
-                "groupby": [
-                    "predication",
-                    "Outcome"
-                ]
-            },
-            {
-                "impute": "xy_count",
-                "groupby": [
-                    "rev",
-                    "predication"
-                ],
-                "key": "Outcome",
-                "value": 0
-            },
-            {
-                "impute": "xy_count",
-                "groupby": [
-                    "rev",
-                    "Outcome"
-                ],
-                "key": "predication",
-                "value": 0
-            },
-            {
-                "joinaggregate": [
-                    {
-                        "op": "max",
-                        "field": "xy_count",
-                        "as": "max_count"
-                    }
-                ],
-                "groupby": []
-            },
-            {
-                "calculate": "datum.xy_count / datum.max_count",
-                "as": "percent_of_max"
-            }
-        ],
-        "encoding": {
-            "x": {
-                "field": "Outcome",
-                "type": "nominal",
-                "sort": "ascending",
-                "title": "Outcome"
-            },
-            "y": {
-                "field": "predication",
-                "type": "nominal",
-                "sort": "ascending",
-                "title": "predication"
+    "encoding": {
+        "x": {
+            "field": "fpr",
+            "type": "quantitative",
+            "title": "fpr"
+        },
+        "y": {
+            "field": "tpr",
+            "type": "quantitative",
+            "title": "tpr",
+            "scale": {
+                "zero": false
             }
         },
-        "layer": [
-            {
-                "mark": "rect",
-                "width": 300,
-                "height": 300,
-                "encoding": {
-                    "color": {
-                        "field": "xy_count",
-                        "type": "quantitative",
-                        "title": "",
-                        "scale": {
-                            "domainMin": 0,
-                            "nice": true
-                        }
-                    }
-                }
-            },
-            {
-                "selection": {
-                    "label": {
-                        "type": "single",
-                        "on": "mouseover",
-                        "encodings": [
-                            "x",
-                            "y"
-                        ],
-                        "empty": "none",
-                        "clear": "mouseout"
-                    }
-                },
-                "mark": "rect",
-                "encoding": {
-                    "tooltip": [
-                        {
-                            "field": "Outcome",
-                            "type": "nominal"
-                        },
-                        {
-                            "field": "predication",
-                            "type": "nominal"
-                        }
-                    ],
-                    "opacity": {
-                        "condition": {
-                            "selection": "label",
-                            "value": 1
-                        },
-                        "value": 0
-                    }
-                }
-            },
-            {
-                "transform": [
-                    {
-                        "filter": {
-                            "selection": "label"
-                        }
-                    }
-                ],
-                "layer": [
-                    {
-                        "mark": {
-                            "type": "rect",
-                            "color": "lightpink"
-                        }
-                    }
-                ]
-            },
-            {
-                "mark": "text",
-                "encoding": {
-                    "text": {
-                        "field": "xy_count",
-                        "type": "quantitative"
-                    },
-                    "color": {
-                        "condition": {
-                            "test": "datum.percent_of_max > 0.5",
-                            "value": "white"
-                        },
-                        "value": "black"
-                    }
-                }
-            }
-        ]
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
     }
 }
 ;
-            vegaEmbed('#dvc_yaml__confusion', spec);
+            vegaEmbed('#roc_json', spec);
         </script>
     </div>
     
