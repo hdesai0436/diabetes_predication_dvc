@@ -1,12 +1,10 @@
 name: train-model
 
 on: [push]
-permissions:
-
-  contents: read|write
 
 jobs:
   run:
+    permissions: write-all
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
