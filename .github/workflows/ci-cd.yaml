@@ -13,12 +13,14 @@ jobs:
           python-version: "3.10.5"
       - name: cml_run
         env:
-            repo_token: ${{secrets.GITHUB_TOKEM}}
+            repo_token: ${{secrets.GITHUB_TOKEN}}
+            AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECREAT_KEY }}
         run: |
             #ml work flow commands
             pip install --upgrade pip
             pip install -r requirements.txt
-
+            dvc pull 
             dvc repro -v
 
             echo "# REPORTS" >> report.md
