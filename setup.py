@@ -22,6 +22,7 @@ setup(
         'dvc[gdrive]',
         'pandas',
         'scikit-learn',
-        'xgboost'
+        'xgboost',
+        
     ]
 )

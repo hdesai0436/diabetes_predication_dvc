@@ -1,6 +1,6 @@
 import argparse
 import pandas as pd
-from src.utils.all_utils import read_yaml,load_model,create_dir,save_local_df,save_json
+from src.utils.all_utils import read_yaml,load_model
 import os
 from sklearn.metrics import roc_auc_score,roc_curve,confusion_matrix
 from sklearn.metrics import precision_score, recall_score, f1_score,accuracy_score,precision_recall_curve
@@ -38,7 +38,8 @@ def evaluate(config_path):
     scores = {
         "roc_auc":roc_auc
     }
-    save_json(scores_json_path,scores)
+    with open(scores_json_path,'w') as f:
+        json.dump(scores,f)
 
     precision,recall,prc_th = precision_recall_curve(y,pred)
 
@@ -50,7 +51,8 @@ def evaluate(config_path):
             for p,r,t in prc_points
         ]
     }
-    save_json(prc_json_path,prc_data)
+    with open(prc_json_path,"w") as f:
+        json.dump(prc_data,f)
 
 
     fpr,tpr,roc_th = roc_curve(y,pred)
@@ -61,7 +63,8 @@ def evaluate(config_path):
             for fp,tp,t in zip(fpr,tpr,roc_th)
         ]
     }
-    save_json(roc_json_path,roc_data)
+    with open(roc_json_path,'w') as f:
+        json.dump(roc_data,f)
 
 
 

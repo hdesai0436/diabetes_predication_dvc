@@ -85,6 +85,6 @@ def load_model(model_file_path):
     return model
 
 
-def save_json(path,data):
+def save_file(data,path):
     with open(path,'w') as f:
         json.dump(data,f,indent=4)

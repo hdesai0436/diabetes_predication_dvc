@@ -1,33 +1,33 @@
-name: train-model
+# name: train-model
 
-on: [push]
+# on: [push]
 
-jobs:
-  run:
-    permissions: write-all
-    runs-on: [ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: iterative/setup-cml@v1
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.10.5"
-      - name: cml_run
-        env:
-            repo_token: ${{secrets.GITHUB_TOKEN}}
-            AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECREAT_KEY }}
-        run: |
-            #ml work flow commands
-            pip install --upgrade pip
-            pip install -r requirements.txt
-            dvc pull 
-            dvc repro -v
+# jobs:
+#   run:
+#     permissions: write-all
+#     runs-on: [ubuntu-latest]
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: iterative/setup-cml@v1
+#       - uses: actions/setup-python@v2
+#         with:
+#           python-version: "3.10.5"
+#       - name: cml_run
+#         env:
+#             repo_token: ${{secrets.GITHUB_TOKEN}}
+#             AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
+#             AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECREAT_KEY }}
+#         run: |
+#             #ml work flow commands
+#             pip install --upgrade pip
+#             pip install -r requirements.txt
+#             dvc pull 
+#             dvc repro -v
 
-            echo "# REPORTS" >> report.md
-            echo "## metrics" >> report.md
-            cat score.json >> report.md
-            cml-send-comment report.md 
+#             echo "# REPORTS" >> report.md
+#             echo "## metrics" >> report.md
+#             cat score.json >> report.md
+#             cml-send-comment report.md 
           
             
 
